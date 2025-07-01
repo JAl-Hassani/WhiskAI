@@ -1,0 +1,13 @@
+.logo-header {
+    color: white;
+    background-color: #F56B11;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    height: 80px;
+}
+
+.logo-img {
+    width: 50px;
+}
