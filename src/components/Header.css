@@ -1,11 +1,12 @@
 .logo-header {
     color: white;
-    background-color: #F56B11;
+    background-color: #f56b11;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 5px;
     height: 80px;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
 }
 
 .logo-img {
