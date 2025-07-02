@@ -2,27 +2,23 @@ import { useState } from 'react'
 import './Main.css'
 
 function Main() {
-    const [ingredient, setIngredient] = useState("")
     const [ingredients, setIngredients] = useState([])
 
-    function handleSubmit(e) {
-        e.preventDefault()
+    function handleSubmit(formData) {
+        const ingredient = formData.get("ingredient")
         if (!ingredient.trim()) return
         setIngredients(prev => [...prev, ingredient])
-        setIngredient("")
     }
 
     return (
         <main>
-            <form className="add-ingredient" onSubmit={handleSubmit}>
+            <form className="add-ingredient" action={handleSubmit}>
                 <input
                     type="text"
                     className='add-ingredient-input'
                     placeholder="e.g. Parmesan" 
                     aria-label="Add ingredient"
                     name='ingredient'
-                    value={ingredient}
-                    onChange={e => setIngredient(e.target.value)}
                 />
                 <button className='add-ingredient-button'>+ Add Ingredient</button>
             </form>
