@@ -2,10 +2,12 @@ import { useState } from 'react'
 import './Main.css'
 import Ingredients from './Ingredients'
 import Recipe from './Recipe'
+import { getRecipe } from '../ai'
 
 function Main() {
     const [ingredients, setIngredients] = useState([])
     const [recipeShown, setRecipeShown] = useState(false)
+    const [recipe, setRecipe] = useState(null)
 
     function handleAddIngredient(formData) {
         const ingredient = formData.get("ingredient")
@@ -15,6 +17,7 @@ function Main() {
 
     function handleGetRecipe(e) {
         e.preventDefault()
+        setRecipe(getRecipe(ingredients))
         setRecipeShown(true)
     }
 
@@ -33,7 +36,7 @@ function Main() {
 
             <Ingredients ingredients={ingredients} handleGetRecipe={handleGetRecipe} />
 
-            <Recipe showRecipe={recipeShown} />
+            <Recipe recipe={recipe} showRecipe={recipeShown} />
         </main>
     )
 }
