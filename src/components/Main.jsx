@@ -22,9 +22,21 @@ function Main() {
                 />
                 <button className='add-ingredient-button'>+ Add Ingredient</button>
             </form>
-            <ul>
-                {ingredients.map(ingredient => <li key={ingredient}>{ingredient}</li>)}
-            </ul>
+            <section>
+                {ingredients.length > 0 && <h2>Ingredients on hand:</h2>}
+                <ul className='ingredients-list'>
+                    {ingredients.map(ingredient => <li key={ingredient}>{ingredient}</li>)}
+                </ul>
+                {ingredients.length > 3 &&
+                <div className='get-recipe-container'>
+                    <div>
+                        <h3>Ready for a recipe?</h3>
+                        <p>Generate a recipe from your list of ingredients.</p>
+                    </div>
+                    <button>Get a recipe</button>
+                </div>
+                }
+            </section>
         </main>
     )
 }
