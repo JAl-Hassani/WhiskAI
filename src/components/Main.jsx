@@ -45,8 +45,8 @@ function Main() {
                     </div>
                 }
             </section>}
-            
-            {recipeShown && <Recipe />}
+
+            <Recipe showRecipe={recipeShown} />
         </main>
     )
 }
