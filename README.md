@@ -16,7 +16,8 @@
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/) v16+  
-- Package manager: npm or yarn  
+- Package manager: npm or yarn
+- Anthropic API key saved in .env file using the environment variable name: VITE_ANTHROPIC_API_KEY
 
 ### Installation
 
