@@ -6,7 +6,7 @@ function MarkdownViewer({ markdownText }) {
 
 function Recipe({ recipe }) {
     return (
-        <section>
+        <section className='suggested-recipe-container'>
             <MarkdownViewer markdownText={recipe} />
         </section>
     )
