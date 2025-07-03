@@ -1,4 +1,4 @@
-import whiskAILogo from '/public/whisk.png'
+import whiskAILogo from '../images/whisk.png'
 import './Header.css'
 
 function Header() {
