@@ -8,6 +8,7 @@ function Main() {
     const [ingredients, setIngredients] = useState([])
     const [recipe, setRecipe] = useState("")
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(null)
 
     function handleAddIngredient(formData) {
         const ingredient = formData.get("ingredient")
@@ -18,9 +19,15 @@ function Main() {
     async function handleGetRecipe(e) {
         e.preventDefault()
         setLoading(true)
-        const generatedRecipe = await getRecipe(ingredients)
-        setRecipe(generatedRecipe)
-        setLoading(false)
+        setError(null)
+        try {
+            const generatedRecipe = await getRecipe(ingredients)
+            setRecipe(generatedRecipe)
+        } catch (err) {
+            setError("Sorry, something went wrong. Please try again later!")
+        } finally {
+            setLoading(false)
+        }
     }
 
     return (
@@ -40,12 +47,17 @@ function Main() {
 
             {loading && (
                 <div className="loading-spinner">
-                    {/* You can replace this with a spinner SVG or CSS animation */}
                     Loading...
                 </div>
             )}
 
-            {!loading && recipe && <Recipe recipe={recipe} />}
+            {error && (
+                <div className="error-message">
+                    {error}
+                </div>
+            )}
+
+            {!loading && !error && recipe && <Recipe recipe={recipe} />}
         </main>
     )
 }

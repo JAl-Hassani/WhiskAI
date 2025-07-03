@@ -105,3 +105,11 @@ ul.ingredients-list > li {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+.error-message {
+    color: #f56b11;
+    text-align: center;
+    margin: 16px 0;
+    font-size: 1rem;
+    font-weight: 600;
+}
