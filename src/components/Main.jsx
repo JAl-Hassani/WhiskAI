@@ -7,6 +7,7 @@ import { getRecipe } from '../ai'
 function Main() {
     const [ingredients, setIngredients] = useState([])
     const [recipe, setRecipe] = useState("")
+    const [loading, setLoading] = useState(false)
 
     function handleAddIngredient(formData) {
         const ingredient = formData.get("ingredient")
@@ -16,8 +17,10 @@ function Main() {
 
     async function handleGetRecipe(e) {
         e.preventDefault()
+        setLoading(true)
         const generatedRecipe = await getRecipe(ingredients)
         setRecipe(generatedRecipe)
+        setLoading(false)
     }
 
     return (
@@ -35,7 +38,14 @@ function Main() {
 
             <Ingredients ingredients={ingredients} handleGetRecipe={handleGetRecipe} />
 
-            {recipe && <Recipe recipe={recipe} />}
+            {loading && (
+                <div className="loading-spinner">
+                    {/* You can replace this with a spinner SVG or CSS animation */}
+                    Loading...
+                </div>
+            )}
+
+            {!loading && recipe && <Recipe recipe={recipe} />}
         </main>
     )
 }
