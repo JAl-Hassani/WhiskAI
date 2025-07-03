@@ -6,8 +6,7 @@ import { getRecipe } from '../ai'
 
 function Main() {
     const [ingredients, setIngredients] = useState([])
-    const [recipeShown, setRecipeShown] = useState(false)
-    const [recipe, setRecipe] = useState(null)
+    const [recipe, setRecipe] = useState("")
 
     function handleAddIngredient(formData) {
         const ingredient = formData.get("ingredient")
@@ -15,10 +14,10 @@ function Main() {
         setIngredients(prev => [...prev, ingredient])
     }
 
-    function handleGetRecipe(e) {
+    async function handleGetRecipe(e) {
         e.preventDefault()
-        setRecipe(getRecipe(ingredients))
-        setRecipeShown(true)
+        const generatedRecipe = await getRecipe(ingredients)
+        setRecipe(generatedRecipe)
     }
 
     return (
@@ -36,7 +35,7 @@ function Main() {
 
             <Ingredients ingredients={ingredients} handleGetRecipe={handleGetRecipe} />
 
-            <Recipe recipe={recipe} showRecipe={recipeShown} />
+            {recipe && <Recipe recipe={recipe} />}
         </main>
     )
 }
